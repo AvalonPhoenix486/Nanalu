@@ -1,0 +1,39 @@
+# Android e Gradle
+.gradle/
+**/build/
+local.properties
+.externalNativeBuild/
+.cxx/
+*.hprof
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Assinatura e credenciais
+*.jks
+*.keystore
+keystore.properties
+key.properties
+secrets.properties
+.env
+.env.*
+!.env.example
+
+# Kotlin e ferramentas
+.kotlin/
+captures/
+.navigation/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs e temporários
+*.log
+*.tmp
+*.temp
