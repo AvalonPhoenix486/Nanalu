@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nanalu</string>
+
+    <string name="nav_home">Início</string>
+    <string name="nav_history">Histórico</string>
+    <string name="nav_stats">Estatísticas</string>
+    <string name="nav_content">Conteúdo</string>
+    <string name="nav_profile">Perfil</string>
+
+    <string name="greeting_night">Boa noite</string>
+    <string name="greeting_dawn">Bom dia</string>
+    <string name="greeting_day">Olá</string>
+    <string name="home_tagline">Cada soninho tem seu momento.\nCada despertar merece carinho.</string>
+
+    <string name="luli_description_night">Luli, a lua mascote do Nanalu, dormindo</string>
+    <string name="luli_description_dawn">Luli, a lua mascote do Nanalu, acordando</string>
+    <string name="luli_description_day">Luli, a lua mascote do Nanalu, acordada</string>
+
+    <string name="home_loading">Carregando…</string>
+    <string name="home_error_title">Não foi possível carregar os dados</string>
+    <string name="home_error_body">Feche e abra o aplicativo para tentar novamente. Nada foi alterado nos seus dados.</string>
+    <string name="home_empty_title">Nenhuma criança cadastrada</string>
+    <string name="home_empty_body">O cadastro do perfil da criança estará disponível em breve. Por enquanto, não há registros para mostrar.</string>
+    <string name="home_profile_fallback_title">Perfil da criança</string>
+    <string name="home_disclaimer">O Nanalu organiza registros de sono e não é um dispositivo médico. Ele não substitui a orientação de profissionais de saúde.</string>
+
+    <plurals name="age_years">
+        <item quantity="one">%d ano</item>
+        <item quantity="other">%d anos</item>
+    </plurals>
+    <plurals name="age_months">
+        <item quantity="one">%d mês</item>
+        <item quantity="other">%d meses</item>
+    </plurals>
+    <plurals name="age_days">
+        <item quantity="one">%d dia</item>
+        <item quantity="other">%d dias</item>
+    </plurals>
+    <string name="age_born_today">Nasceu hoje</string>
+    <string name="age_and">e</string>
+
+    <string name="placeholder_status">Em desenvolvimento</string>
+    <string name="history_body">Aqui ficará a lista dos episódios de sono registrados, com opção de corrigir ou excluir cada um.</string>
+    <string name="stats_body">Aqui ficarão os totais e as médias calculados a partir dos seus registros, sempre indicando quantos dados foram usados.</string>
+    <string name="content_body">Aqui ficarão os artigos sobre sono infantil, com as referências de cada informação.</string>
+    <string name="profile_body">Aqui ficarão os dados da criança, as preferências, a privacidade e a opção de excluir todos os dados.</string>
+</resources>
