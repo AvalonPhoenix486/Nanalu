@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -41,14 +42,14 @@ import app.nanalu.presentation.luli.SkyPalette
 import app.nanalu.presentation.luli.skyPalette
 
 @Composable
-fun HomeRoute(viewModel: HomeViewModel) {
+fun HomeRoute(viewModel: HomeViewModel, onCreateProfile: () -> Unit) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val period by rememberDayPeriod()
-    HomeScreen(state, period)
+    HomeScreen(state, period, onCreateProfile)
 }
 
 @Composable
-fun HomeScreen(state: HomeUiState, period: DayPeriod) {
+fun HomeScreen(state: HomeUiState, period: DayPeriod, onCreateProfile: () -> Unit) {
     val palette = skyPalette(period)
     StatusBarIcons(lightIcons = palette.isDark)
 
@@ -80,7 +81,7 @@ fun HomeScreen(state: HomeUiState, period: DayPeriod) {
             Spacer(Modifier.height(16.dp))
             LuliMoon(period, palette)
             Spacer(Modifier.height(16.dp))
-            StatusCard(state, palette)
+            StatusCard(state, palette, onCreateProfile)
             Spacer(Modifier.height(16.dp))
             Text(
                 stringResource(R.string.home_disclaimer),
@@ -94,7 +95,7 @@ fun HomeScreen(state: HomeUiState, period: DayPeriod) {
 }
 
 @Composable
-private fun StatusCard(state: HomeUiState, palette: SkyPalette) {
+private fun StatusCard(state: HomeUiState, palette: SkyPalette, onCreateProfile: () -> Unit) {
     Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(24.dp), color = palette.card) {
         Column(
             Modifier.padding(20.dp).fillMaxWidth(),
@@ -109,9 +110,10 @@ private fun StatusCard(state: HomeUiState, palette: SkyPalette) {
                 state.loadFailed -> CardText(
                     stringResource(R.string.home_error_title), stringResource(R.string.home_error_body), palette,
                 )
-                state.child == null -> CardText(
-                    stringResource(R.string.home_empty_title), stringResource(R.string.home_empty_body), palette,
-                )
+                state.child == null -> {
+                    CardText(stringResource(R.string.home_empty_title), stringResource(R.string.home_empty_body), palette)
+                    Button(onClick = onCreateProfile) { Text(stringResource(R.string.action_register_child)) }
+                }
                 else -> CardText(
                     state.child.name ?: stringResource(R.string.home_profile_fallback_title),
                     state.child.age?.let { ageText(it) },

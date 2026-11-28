@@ -1,9 +1,11 @@
 package app.nanalu.presentation
 
+import app.nanalu.FakeChildProfileRepository
 import app.nanalu.domain.age.Age
 import app.nanalu.domain.model.ChildProfile
 import app.nanalu.domain.repository.ChildProfileRepository
 import app.nanalu.presentation.home.HomeViewModel
+import app.nanalu.sampleProfile
 import java.io.IOException
 import java.time.Clock
 import java.time.Instant
@@ -35,14 +37,14 @@ class HomeViewModelTest {
 
     @After fun tearDown() = Dispatchers.resetMain()
 
-    private class FakeRepository(private val source: Flow<ChildProfile?>) : ChildProfileRepository {
-        override fun observeProfile() = source
+    private fun FakeRepository(source: Flow<ChildProfile?>): ChildProfileRepository {
+        val fake = FakeChildProfileRepository()
+        return object : ChildProfileRepository by fake {
+            override fun observeProfile() = source
+        }
     }
 
-    private fun profile(name: String?, birth: String) = ChildProfile(
-        id = "1", name = name, birthDate = LocalDate.parse(birth),
-        createdAt = Instant.EPOCH, updatedAt = Instant.EPOCH,
-    )
+    private fun profile(name: String?, birth: String) = sampleProfile(name, birth)
 
     private fun kotlinx.coroutines.test.TestScope.collect(vm: HomeViewModel) =
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) { vm.uiState.collect {} }
